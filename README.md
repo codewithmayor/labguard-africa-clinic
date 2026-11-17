@@ -1,6 +1,6 @@
 # LabGuard
 
-LabGuard helps a small clinic in South Africa or Nigeria check patient identity, recipient permission, clinician approval and duplicate actions before automated lab-result delivery.
+LabGuard helps a small clinic in South AfricA, Nigeria or any other African country check patient identity, recipient permission, clinician approval and duplicate actions before automated lab-result delivery.
 
 **PROJECT_ID:** `<add hackathon project ID>`
 
