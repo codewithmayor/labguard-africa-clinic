@@ -11,8 +11,9 @@ LabGuard is a working prototype that checks proposed lab-result deliveries again
 
 A failed check stops delivery and explains why. An approved action delivers the report to the intended patient's inbox. Retrying a completed delivery does not create another copy.
 
-**Built by:** Mayowa Olawumi — solo hackathon entry  
-**PROJECT_ID:** `<add hackathon project ID>`
+**Built by:** Mayowa Olawumi
+**Project:** LabGuard
+**Entry:** Individual
 
 ## The African use case
 
