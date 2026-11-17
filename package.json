@@ -1,0 +1,10 @@
+{
+  "name": "labguard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Synthetic laboratory report delivery guard demo",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  }
+}

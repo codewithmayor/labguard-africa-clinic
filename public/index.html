@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LabGuard | Safer lab follow-ups</title>
+  <link rel="stylesheet" href="/public/styles.css">
+  <link rel="stylesheet" href="/public/records.css">
+  <script src="/public/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="LabGuard home"><span class="brand-mark">L</span><span>LabGuard</span></a>
+    <div class="clinic"><span class="clinic-dot"></span> Umoya Community Clinic <span class="location">· Cape Town, South Africa</span></div>
+    <span class="synthetic-tag">Synthetic data · Demonstration only</span>
+  </header>
+  <main>
+    <section id="signin" class="signin panel">
+      <div class="eyebrow">SAFE LAB FOLLOW-UPS</div>
+      <h1>Every report, to the right person.</h1>
+      <p class="muted">LabGuard checks identity, inbox permissions and clinical approval before a simulated agent can deliver a report.</p>
+      <label for="accountSelect">Sign in as a demo account</label>
+      <div class="signin-row">
+        <select id="accountSelect">
+          <option value="agent-demo">Simulated agent</option>
+          <option value="clinician-demo">Demo clinician · Dr. Nia Example</option>
+          <option value="patient-a-demo">Patient A · Ama Example</option>
+          <option value="patient-b-demo">Patient B · Tunde Example</option>
+        </select>
+        <button id="signInButton" class="button primary">Enter demo</button>
+      </div>
+      <div class="signin-note">Fictional people, IDs and results. No real patient data.</div>
+    </section>
+
+    <div id="dashboard" hidden>
+      <section class="welcome-row">
+        <div><div class="eyebrow">LABGUARD WORKSPACE</div><h1>Delivery control</h1></div>
+        <div class="account-pill"><span id="accountName"></span><button id="signOutButton" class="link-button">Switch account</button></div>
+      </section>
+      <section id="agentView" hidden>
+        <div class="section-heading"><div><h2>Action review</h2><p class="muted">Inspect a proposal before any report leaves the clinic.</p></div><div class="mode-badges"><span class="sim-badge">Simulated agent proposal</span><span class="manual-badge">Manual proposal mode</span><span class="live-badge">Live AI unavailable</span></div></div>
+        <div class="layout">
+          <div class="panel proposal-panel">
+            <div class="eyebrow">DEMO SCENARIOS</div>
+            <div class="scenario-grid">
+              <button class="scenario" data-scenario="wrong"><span class="scenario-number">01</span><span><b>Wrong patient</b><small>Report A → patient B</small></span></button>
+              <button class="scenario" data-scenario="unauthorized"><span class="scenario-number">02</span><span><b>Unauthorised inbox</b><small>Patient A → patient B inbox</small></span></button>
+              <button class="scenario" data-scenario="correct"><span class="scenario-number">03</span><span><b>Routine delivery</b><small>Report A → patient A</small></span></button>
+              <button class="scenario" data-scenario="review"><span class="scenario-number">04</span><span><b>Clinician review</b><small>Flagged report → patient A</small></span></button>
+            </div>
+            <div class="form-heading"><div class="eyebrow">PROPOSED ACTION</div><span class="type-chip">DELIVER_REPORT</span></div>
+            <div class="field-grid">
+              <label>Request ID<input id="requestId" autocomplete="off"></label>
+              <label>Report ID<input id="reportId" list="reportOptions" autocomplete="off"></label>
+              <label>Patient ID<input id="patientId" list="patientOptions" autocomplete="off"></label>
+              <label>Recipient inbox ID<input id="recipientId" list="recipientOptions" autocomplete="off"></label>
+              <datalist id="reportOptions"></datalist>
+              <datalist id="patientOptions"></datalist>
+              <datalist id="recipientOptions"></datalist>
+            </div>
+            <div class="button-row">
+              <button id="previewButton" class="button secondary">Preview checks</button>
+              <button id="executeButton" class="button primary">Execute delivery</button>
+            </div>
+          </div>
+          <div class="panel results-panel">
+            <div class="section-heading compact"><div><div class="eyebrow">GUARD DECISION</div><h2 id="decisionTitle">Ready to review</h2></div><span id="decisionBadge" class="decision-badge neutral">Awaiting preview</span></div>
+            <p id="decisionMessage" class="muted">Choose a scenario, then preview the proposed action.</p>
+            <div id="ruleList" class="rule-list"><div class="empty-state">Rules will appear here.</div></div>
+            <div id="clinicianActions" class="approval-box" hidden>
+              <div><b>Clinical approval required</b><p>Switch to the demo clinician account to inspect and approve this exact pending action.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="panel audit-panel">
+          <div class="section-heading compact"><div><div class="eyebrow">STAFF-ONLY RECORD</div><h2>Audit history</h2></div><span class="small-muted">Latest activity</span></div>
+          <div id="auditList" class="audit-list"><div class="empty-state">No actions recorded yet.</div></div>
+        </div>
+      </section>
+      <section id="clinicianView" class="panel" hidden>
+        <div class="section-heading"><div><div class="eyebrow">CLINICAL REVIEW</div><h1>Approval desk</h1></div><span class="role-badge">Demo clinician</span></div>
+        <p class="muted">Review the exact action in the proposal. Approval is bound to its request ID and report version; identity and permission failures cannot be approved.</p>
+        <div class="record-forms">
+          <form id="patientForm" class="record-form">
+            <div class="eyebrow">NEW FICTIONAL PATIENT</div>
+            <label>Patient name<input id="newPatientName" maxlength="80" placeholder="e.g. Lindi Example" required></label>
+            <button class="button secondary" type="submit">Create patient + inbox</button>
+          </form>
+          <form id="reportForm" class="record-form">
+            <div class="eyebrow">NEW FICTIONAL REPORT</div>
+            <label>Patient<select id="newReportPatient" required></select></label>
+            <label>Report title<input id="newReportTitle" maxlength="100" placeholder="e.g. Routine panel" required></label>
+            <label>Report text<textarea id="newReportDetails" maxlength="4000" rows="3" placeholder="Synthetic demonstration report text" required></textarea></label>
+            <label class="checkbox-label"><input id="newReportReview" type="checkbox"> Clinician review required</label>
+            <button class="button secondary" type="submit">Create report</button>
+          </form>
+        </div>
+        <p id="recordStatus" class="record-status" role="status">Use fictional names and results only.</p>
+        <div class="eyebrow pending-label">PENDING PROPOSALS</div>
+        <div id="pendingReviews" class="pending-reviews"><div class="empty-state">No actions are awaiting review.</div></div>
+        <div class="approval-proposal" id="clinicianProposal"><div class="empty-state">Select a pending action to inspect it.</div></div>
+        <button id="clinicianApproveButton" class="button primary" disabled>Approve exact action</button>
+        <div class="audit-separator"><div class="eyebrow">AUDIT HISTORY</div><div id="clinicianAudit" class="audit-list"></div></div>
+      </section>
+      <section id="patientView" class="panel" hidden>
+        <div class="section-heading"><div><div class="eyebrow">YOUR PRIVATE INBOX</div><h1>Lab reports</h1></div><span class="role-badge">Patient account</span></div>
+        <p class="muted">Only reports addressed to this fictional patient's inbox appear here.</p>
+        <div id="inboxList" class="inbox-list"><div class="empty-state">Loading your inbox…</div></div>
+      </section>
+      <footer>Demonstration only · Simulated agent · Local synthetic inbox</footer>
+    </div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </main>
+</body>
+</html>
