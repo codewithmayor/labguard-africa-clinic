@@ -14,6 +14,7 @@ A failed check stops delivery and explains why. An approved action delivers the 
 **Built by:** Mayowa Olawumi
 **Project:** LabGuard
 **Entry:** Individual
+**Hackathon PROJECT_ID:** Not provided; add it from the event portal.
 
 ## The African use case
 
