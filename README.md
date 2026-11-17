@@ -110,7 +110,7 @@ Prepare the two fictional patients and the review-required report before present
 | Time | Demonstration |
 | --- | --- |
 | 0–10 seconds | Explain the clinic problem and identify the proposal generator as simulated. |
-| 10–25 seconds | Attempt a wrong-patient delivery. Show the failed check and zero deliveries. |
+| 10–25 seconds | Attempt wrong-patient and wrong-recipient deliveries. Show both failed checks and zero new inbox deliveries. |
 | 25–40 seconds | Correct the proposal, show that approval is required, approve it as clinician and execute as agent. |
 | 40–50 seconds | Open patient A's inbox and show the delivered report. |
 | 50–60 seconds | Retry the delivery. Show that only one inbox item exists and inspect the audit history. |
@@ -135,10 +135,10 @@ The current demonstration checks delivery permissions and workflow rules. It doe
 
 ## Submission checklist
 
-- [ ] Confirm the GitHub repository is publicly accessible.
+- [x] Confirm the GitHub repository is publicly accessible.
 - [ ] Replace the `PROJECT_ID` placeholder.
 - [ ] Capture the genuine GitHub Copilot `/usage` screenshot.
-- [ ] Prepare the fictional records and rehearse the one-minute demo.
+- [x] Prepare the fictional records and rehearse the one-minute demo.
 - [ ] Submit once as an individual before the confirmed deadline.
 
 Submission: https://hackathon-project-submission.vercel.app
