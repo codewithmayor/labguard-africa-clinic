@@ -9,7 +9,14 @@ LabGuard helps a small clinic in South Africa or Nigeria check patient identity,
 Requires Node.js 18 or newer. No packages or external services are required; there is no `npm install` step.
 
 ```sh
+git clone https://github.com/codewithmayor/labguard-africa-clinic.git
+cd labguard-africa-clinic
 npm start
+```
+
+In another terminal, run the tests:
+
+```sh
 npm test
 ```
 
