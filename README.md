@@ -38,7 +38,7 @@ Before presenting, use the clinician forms to prepare two fictional patients/inb
 - **40–50 seconds:** Sign in as patient A and open the delivered report.
 - **50–60 seconds:** Retry with the same and a new request ID; show one inbox item and the staff audit history.
 
-## How we kept tokens low
+## How I kept tokens low
 
 - **Copilot build:** limited scope to one action and Node built-ins.
 - **Copilot build:** reused one guard for preview and execution.
